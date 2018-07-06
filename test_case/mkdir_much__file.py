@@ -1,6 +1,6 @@
 import os
 import time
-
+from pathlib import Path
 
 def makefile(s):
     '''The number of new expected documents'''
@@ -20,9 +20,9 @@ def makefile(s):
         with open(filename,'w') as file_object:
             file_object.write('only for test'+ ' '+localTime)
         # 输出第几个文件和对应的文件名称
-        print("file" + " " + str(i) + ":" + str(localTime) + ".txt")
+        print("正在生成第 " + " " + str(i) +" 个文件" + " 完成时间: " + str(localTime))
         time.sleep(1)
-    print("ALL Down")
+    print("---生成文件完成---")
     time.sleep(5)
 
 
@@ -30,3 +30,9 @@ if __name__ == '__main__':
     s = input("请输入需要生成的文件数：")
     s = int(s)
     makefile(s)
+
+    dir_path = 'E:\\5w_files\\'
+    #统计目录下共有多少文件
+    len = len(list(Path(dir_path).iterdir()))
+    print("目录下共有：" + str(len) + " 个文件！")
+    input("请输入任意键退出！")
